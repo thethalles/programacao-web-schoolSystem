@@ -1,0 +1,68 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "Carlos Teves",
+      "course": "Ciências da Computação"
+    },
+    {
+      "id": 2,
+      "name": "Fernanda Costa",
+      "course": "Administração"
+    },
+    {
+      "id": 3,
+      "name": "Lucas Silva",
+      "course": "Enfermagem"
+    },
+    {
+      "id": 4,
+      "name": "Severino Lopes",
+      "course": "Análise e Desenvolvimento de Sistemas"
+    }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "name": "Administração",
+      "price": 800,
+      "active": true,
+      "promotion": false
+    },
+    {
+      "id": 2,
+      "name": "Gestão Empresarial",
+      "price": "400",
+      "active": true,
+      "promotion": ""
+    },
+    {
+      "id": 3,
+      "name": "Mecatrônica",
+      "price": "340",
+      "active": false,
+      "promotion": null
+    },
+    {
+      "id": 4,
+      "name": "Corte e Costura",
+      "price": "99,9",
+      "active": true,
+      "promotion": true
+    },
+    {
+      "id": 5,
+      "name": "Design Gráfico",
+      "price": "149,9",
+      "active": null,
+      "promotion": false
+    },
+    {
+      "id": 6,
+      "name": "Legislação Empresarial",
+      "price": 400,
+      "active": true,
+      "promotion": true
+    }
+  ]
+}
