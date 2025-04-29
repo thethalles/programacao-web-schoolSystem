@@ -1,11 +1,6 @@
 {
   "students": [
     {
-      "id": 1,
-      "name": "Carlos Teves",
-      "course": "Ciências da Computação"
-    },
-    {
       "id": 2,
       "name": "Fernanda Costa",
       "course": "Administração"

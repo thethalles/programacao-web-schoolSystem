@@ -10,6 +10,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrl: './students.component.css'
 })
 export class StudentsComponent implements OnInit {
+
   students: Student[] = [];
   formGroupStudent: FormGroup; //Formulário para criar um novo estudante
 
@@ -24,9 +25,13 @@ export class StudentsComponent implements OnInit {
     } 
 
   ngOnInit(): void { //Captura o evento de inicialização do componente
-      this.studentService.getAll().subscribe({
-        next: json => this.students = json, //Atribui o resultado da requisição à variável students
-      })
+    this.loadStudents(); //Carrega os estudantes ao inicializar o componente
+  }
+
+  loadStudents(){
+    this.studentService.getAll().subscribe({
+      next: json => this.students = json, //Atribui o resultado da requisição à variável students
+    })
   }
 
   save() {
@@ -38,5 +43,9 @@ export class StudentsComponent implements OnInit {
     })
   }
 
-
+  delete(student: Student) {
+    this.studentService.delete(student).subscribe({
+      next: () => this.loadStudents()
+    })
+  }
 }
