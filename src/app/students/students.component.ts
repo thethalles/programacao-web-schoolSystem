@@ -13,6 +13,7 @@ export class StudentsComponent implements OnInit {
 
   students: Student[] = [];
   formGroupStudent: FormGroup; //Formulário para criar um novo estudante
+  isEditing: boolean = false; //Variável de contole para verificar se o estudante está sendo editado
 
   constructor(private studentService: StudentService, 
               private formBuilder: FormBuilder //Injetando o StudentService e formBuilder no construtor, criando uma dependência
@@ -48,4 +49,29 @@ export class StudentsComponent implements OnInit {
       next: () => this.loadStudents()
     })
   }
+
+  onClickUpdate(student: Student) {
+    this.studentService.update(student).subscribe({
+      next: () => {
+        this.isEditing = true;
+        this.formGroupStudent.setValue(student);
+      }
+    })
+  }
+
+  update() {
+    this.studentService.update(this.formGroupStudent.value).subscribe({
+      next: () => {
+        this.loadStudents() //Carrega os estudantes após atualizar
+        this.isEditing = false;
+        this.formGroupStudent.reset(); //Limpa o formulário após atualizar o estudante
+      } 
+    })
+  }
+
+  cancel() {
+    this.isEditing = false;
+    this.formGroupStudent.reset(); //Limpa o formulário ao cancelar a edição
+  }
+
 }
