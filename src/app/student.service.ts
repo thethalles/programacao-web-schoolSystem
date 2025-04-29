@@ -11,11 +11,19 @@ export class StudentService {
 
   constructor(private http: HttpClient) { } // Injetando o HttpClient no construtor, criando uma dependência
 
-  getStudents() : Observable <Student[]> {
+  getAll() : Observable <Student[]> {
     return this.http.get<Student[]>(this.apiUrl); // Método GET para obter todos os estudantes
   }
 
-  saveStudent(student: Student): Observable<Student> {
+  save(student: Student): Observable<Student> {
     return this.http.post<Student>(this.apiUrl, student); // Método POST para salvar um estudante
+  }
+
+  delete(student: Student): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${student.id}`); // Método DELETE para remover um estudante
+  }
+
+  update(student: Student): Observable<Student> {
+    return this.http.put<Student>(`${this.apiUrl}/${student.id}`, student); // Método PUT para atualizar um estudante
   }
 }

@@ -24,13 +24,13 @@ export class StudentsComponent implements OnInit {
     } 
 
   ngOnInit(): void { //Captura o evento de inicialização do componente
-      this.studentService.getStudents().subscribe({
+      this.studentService.getAll().subscribe({
         next: json => this.students = json, //Atribui o resultado da requisição à variável students
       })
   }
 
   save() {
-    this.studentService.saveStudent(this.formGroupStudent.value).subscribe({
+    this.studentService.save(this.formGroupStudent.value).subscribe({
       next: json => {
         this.students.push(json); //Adiciona o estudante à lista de estudantes
         this.formGroupStudent.reset(); //Limpa o formulário após salvar o estudante
