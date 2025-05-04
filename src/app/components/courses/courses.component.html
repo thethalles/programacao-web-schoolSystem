@@ -13,31 +13,35 @@
         </div>
         <!--Adicionando o Input(Mensalidade)-->
         <div class="mb-3">
-            <label for="InputPrice" class="form-label">Mensalidade</label>
-            <input formControlName="price" type="number" class="form-control" id="InputPrice" aria-describedby="priceHelp">
-            <div id="priceHelp" class="form-text">Digite a mensalidade do Curso</div>
+          <label for="InputPrice" class="form-label">Mensalidade</label>
+          <input formControlName="price" type="number" class="form-control" id="InputPrice"
+            aria-describedby="priceHelp">
+          <div id="priceHelp" class="form-text">Digite a mensalidade do Curso</div>
         </div>
 
         <div class="d-flex align-items-center">
-          <!--Adicionando o Input(Situação)-->
-          <div class="mb-3 me-4">
-            <p>Situação do Curso</p>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" formControlName="active" id="radioDefault1" [value]="true">
-              <label class="form-check-label" for="radioDefault1">Ativo</label>
+          <div class="row w-100">
+            <!-- Situação do Curso -->
+            <div class="col-md-6 mb-3">
+              <p>Situação do Curso</p>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="active" id="radioDefault1" [value]="true">
+                <label class="form-check-label" for="radioDefault1">Ativo</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="active" id="radioDefault2"
+                  [value]="false">
+                <label class="form-check-label" for="radioDefault2">Bloqueado</label>
+              </div>
             </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" formControlName="active" id="radioDefault2" [value]="false">
-              <label class="form-check-label" for="radioDefault2">Bloqueado</label>
+            <!-- Condições de Pagamento -->
+            <div class="col-md-6 mb-3">
+              <p>Condições de Pagamento</p>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" formControlName="promotion" id="promotion" checked>
+                <label class="form-check-label" for="promotion">Valor Promocional?</label>
+              </div>
             </div>
-          </div>
-          <!--Adicionando o Input(Valor Promocional)-->
-          <div class="mb-3 me-4">
-            <p>Condições de Pagamento</p>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" formControlName="promotion" id="promotion" checked>
-              <label class="form-check-label" for="promotion">Valor Promocional?</label>
-            </div> 
           </div>
         </div>
         <button type="submit" class="btn btn-primary" (click)="save()">Salvar</button>
@@ -46,13 +50,13 @@
       <!--Adicionando uma Tabela-->
       <h2 class="text-center">Cursos Cadastrados</h2>
       <table class="table table-striped">
-        <thead> 
+        <thead>
           <tr class="text-center">
             <th scope="col">ID</th>
             <th scope="col">Curso</th>
             <th scope="col">Mensalidade(R$)</th>
             <th scope="col">Situação do Curso</th>
-            <th scope ="col">Valor Promocional?</th>
+            <th scope="col">Valor Promocional?</th>
             <th scope="col">Remover</th>
             <th scope="col">Atualizar</th>
           </tr>
@@ -64,8 +68,8 @@
             <td>{{c.price}}</td>
             <td>{{c.active ? 'Ativo' : 'Bloqueado'}}</td>
             <td>{{c.promotion ? 'Sim' : 'Não'}}</td>
-            <td><button class="btn btn-danger">Remover</button></td>
-            <td><button class="btn btn-primary">Atualizar</button></td>
+            <td><button class="btn btn-danger" (click)="delete(c)">Remover</button></td>
+            <td><button class="btn btn-primary" (click)="onClickUpdate(c)">Atualizar</button></td>
           </tr>
         </tbody>
       </table>

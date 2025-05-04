@@ -31,8 +31,8 @@ export class StudentsComponent implements OnInit {
 
   loadStudents(){
     this.studentService.getAll().subscribe({
-      next: json => this.students = json, //Atribui o resultado da requisição à variável students
-    })
+      next: json => this.students = json //Atribui o resultado da requisição à variável students
+    });
   }
 
   save() {

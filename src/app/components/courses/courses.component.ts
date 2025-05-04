@@ -13,6 +13,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class CoursesComponent implements OnInit {
   courses: Course[] = [];
   formGroupCourse: FormGroup;
+  isEditing: boolean = false;
 
   constructor(private courseService: CourseService,
               private formBuilder: FormBuilder //Injetando o CourseService e formBuilder no construtor, criando uma dependência
@@ -28,17 +29,58 @@ export class CoursesComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.courseService.getCourses().subscribe({
-      next: json => this.courses = json,
-    })
+    this.loadCourses();
+  }
+
+  loadCourses(){
+    this.courseService.getAll().subscribe({
+      next: json => this.courses = json
+    });   
   }
   
   save(){
-    this.courseService.saveCourse(this.formGroupCourse.value).subscribe({
+    this.courseService.save(this.formGroupCourse.value).subscribe({
       next: json => {
-        this.courses.push(json);
-        this.formGroupCourse.reset();
+        this.courses.push(json); //Add Curso
+        this.formGroupCourse.reset(); //Limpa o Formulário
       }
     })
   }
+
+  delete(course: Course){
+    this.courseService.delete(course).subscribe({
+      next: () => this.loadCourses()
+    });
+  }
+
+  onClickUpdate(course: Course) {
+    this.courseService.update(course).subscribe({
+      next: () => {
+        this.isEditing = true;
+        this.formGroupCourse.patchValue({
+          id: course.id,
+          name: course.name,
+          price: course.price,
+          active: course.active,
+          promotion: course.promotion
+        });
+      }
+    });
+  }
+  
+  update() {
+    this.courseService.update(this.formGroupCourse.value).subscribe({
+      next: () => {
+        this.loadCourses() //Carrega os estudantes após atualizar
+        this.isEditing = false;
+        this.formGroupCourse.reset(); //Limpa o formulário após atualizar o estudante
+      } 
+    })
+  }
+
+  cancel() {
+    this.isEditing = false;
+    this.formGroupCourse.reset(); //Limpa o formulário ao cancelar a edição
+  }
+
 }

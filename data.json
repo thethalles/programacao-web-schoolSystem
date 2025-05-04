@@ -41,23 +41,16 @@
     {
       "id": 4,
       "name": "Corte e Costura",
-      "price": "99,9",
+      "price": "99.9",
       "active": true,
       "promotion": true
     },
     {
       "id": 5,
       "name": "Design Gráfico",
-      "price": "149,9",
+      "price": "149.9",
       "active": null,
       "promotion": false
-    },
-    {
-      "id": 6,
-      "name": "Legislação Empresarial",
-      "price": 400,
-      "active": true,
-      "promotion": true
     }
   ]
 }

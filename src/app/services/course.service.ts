@@ -11,11 +11,19 @@ export class CourseService {
   
   constructor(private http: HttpClient) { } // Injetando o HttpClient no construtor, criando uma dependência
 
-  getCourses(): Observable<Course[]> {
+  getAll(): Observable<Course[]> {
     return this.http.get<Course[]>(this.apiUrl); // Método GET para obter todos os cursos
   }
 
-  saveCourse(course: Course): Observable<Course> {
+  save(course: Course): Observable<Course> {
     return this.http.post<Course>(this.apiUrl, course); // Método POST para salvar um curso
+  }
+
+  update(course: Course): Observable<Course> {
+    return this.http.put<Course>(`${this.apiUrl}/${course.id}`, course);
+  }
+
+  delete(course: Course): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${course.id}`);
   }
 }
