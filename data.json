@@ -14,6 +14,11 @@
       "id": 4,
       "name": "Severino Lopes",
       "course": "Análise e Desenvolvimento de Sistemas"
+    },
+    {
+      "id": 5,
+      "name": "Thalles Santana",
+      "course": "Eventos"
     }
   ],
   "courses": [
@@ -25,17 +30,10 @@
       "promotion": false
     },
     {
-      "id": 2,
-      "name": "Gestão Empresarial",
-      "price": "400",
-      "active": true,
-      "promotion": ""
-    },
-    {
       "id": 3,
       "name": "Mecatrônica",
-      "price": "340",
-      "active": false,
+      "price": 600,
+      "active": true,
       "promotion": null
     },
     {
