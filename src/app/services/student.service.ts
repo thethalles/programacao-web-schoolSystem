@@ -7,7 +7,7 @@ import { Student } from '../models/student';
   providedIn: 'root'
 })
 export class StudentService {
-  private apiUrl = 'http://localhost:3000/students';  // URL Da API
+  private apiUrl = 'http://localhost:8080/students';  // URL Da API
 
   constructor(private http: HttpClient) { } // Injetando o HttpClient no construtor, criando uma dependência
 
